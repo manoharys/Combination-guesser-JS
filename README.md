@@ -1,7 +1,15 @@
 # Combination-guesser-JS
 
-# Instructions:
+<strong>Random values and DOM manipulation </strong>
+<ul>
+    <li>guess the secret combination</li>
+    <li>Random combinations</li>
+    <li>Provides feedback when wrong values is selected
+        -Blue is low -Red is high -Green is correct
+    </li>
+    <li>Tracks guess count</li>
+    <li>No HTML elements all JavaSript created</li>
+</ul>
+<img src="https://github.com/manoharys/Combination-guesser-JS/blob/master/Capture.JPG" alt="">
 
- <b> Guess the combo, blue means higher red means lower. </b>
-  
- <b> Try to solve it in as little guesses as possible. </b>
+ 
