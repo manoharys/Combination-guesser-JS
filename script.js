@@ -1,27 +1,41 @@
 const gameArea = document.querySelector('.game');
 const button = document.querySelector('button');
+const message = document.querySelector('.message');
 btnStyle();
 let gamePlay = false;
-
+let score = 0;
+let winCondition;
 button.addEventListener('click', function () {
     if (!gamePlay) {
         gamePlay = true;
+        score = 0;
         button.innerHTML = 'Check Combo';
         mover();
     } else {
         console.log('cheker');
+        score++;
+        message.innerHTML = score + " Guess";
         const k = document.querySelectorAll('.numb');
         console.log(k);
         for (i = 0; i < k.length; i++) {
-
+            winCondition++;
             //console.log(k[i].value);
             if (k[i].value == k[i].correct) {
                 console.log("matched");
+                k[i].style.backgroundColor = "green";
+                k[i].style.color = "white";
             } else {
                 console.log("not matched");
+                let color = (k[i].value < k[i].correct) ? "blue" : "red";
+                k[i].style.backgroundColor = color;
+
+            }
+            if (winCondition == k.length) {
+                console.log("game over!!");
             }
         }
     }
+
 });
 
 //function which generate the input fields.
@@ -32,6 +46,7 @@ function mover() {
         element.setAttribute('type', 'number');
         element.style.width = "100px";
         element.style.fontSize = '2rem';
+        element.style.textAlign = 'center';
         element.max = 9;
         element.min = 0;
         element.size = 1;
@@ -49,6 +64,8 @@ function mover() {
 
 //adding styles to the button
 function btnStyle() {
+    message.style.fontSize = '1.4rem';
+    message.style.textAlign = "center";
     gameArea.style.display = 'flex';
     gameArea.style.marginLeft = '350px';
     gameArea.style.marginTop = '50px';
