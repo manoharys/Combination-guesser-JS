@@ -4,34 +4,39 @@ const message = document.querySelector('.message');
 btnStyle();
 let gamePlay = false;
 let score = 0;
-let winCondition;
+
 button.addEventListener('click', function () {
     if (!gamePlay) {
         gamePlay = true;
         score = 0;
+        gameArea.innerHTML = "";
+        maker();
+        message.innerHTML = "guess the combo"
         button.innerHTML = 'Check Combo';
-        mover();
+
     } else {
-        console.log('cheker');
+        // console.log('cheker');
         score++;
         message.innerHTML = score + " Guess";
         const k = document.querySelectorAll('.numb');
-        console.log(k);
-        for (i = 0; i < k.length; i++) {
-            winCondition++;
+        //console.log(k);
+        let winCondition = 0;
+        for (let i = 0; i < k.length; i++) {
+
             //console.log(k[i].value);
             if (k[i].value == k[i].correct) {
-                console.log("matched");
+                //console.log("matched");
                 k[i].style.backgroundColor = "green";
                 k[i].style.color = "white";
+                winCondition++;
             } else {
-                console.log("not matched");
+                //console.log("not matched");
                 let color = (k[i].value < k[i].correct) ? "blue" : "red";
                 k[i].style.backgroundColor = color;
 
             }
             if (winCondition == k.length) {
-                console.log("game over!!");
+                endGame();
             }
         }
     }
@@ -39,8 +44,8 @@ button.addEventListener('click', function () {
 });
 
 //function which generate the input fields.
-function mover() {
-    for (i = 0; i < 5; i++) {
+function maker() {
+    for (let x = 0; x < 5; x++) {
         let element = document.createElement('input');
         //console.log(element);
         element.setAttribute('type', 'number');
@@ -50,9 +55,9 @@ function mover() {
         element.max = 9;
         element.min = 0;
         element.size = 1;
-        element.order = i;
+        element.order = x;
         element.correct = Math.floor(Math.random() * 10);
-        element.value = element.correct;
+        element.value = 0;
         element.classList.add('numb');
 
         //console.log(element.value);
@@ -89,4 +94,12 @@ function btnStyle() {
         this.style.cursor = 'pointer';
 
     })
+}
+
+//Function which End the Guessing
+
+function endGame() {
+    message.innerHTML = "you took " + score + " guesses";
+    gamePlay = false;
+    button.innerHTML = "restart";
 }
