@@ -10,6 +10,9 @@
     <li>Tracks guess count</li>
     <li>No HTML elements all JavaSript created</li>
 </ul>
+
+<a href = "https://manoharys.github.io/Combination-guesser-JS/"> check here </a>
+
 <img src="https://github.com/manoharys/Combination-guesser-JS/blob/master/Capture.JPG" alt="">
 
  
